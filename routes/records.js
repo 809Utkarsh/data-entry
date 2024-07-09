@@ -3,6 +3,7 @@ const Record = require('../models/Record');
 const router = express.Router();
 
 router.get('/', async(req, res) => {
+    console.log('Get/recorde request recieved');
     try {
         const records = await Record.find();
         res.json(records);
@@ -11,7 +12,10 @@ router.get('/', async(req, res) => {
     }
 });
 
+
+
 router.post('/', async(req, res) => {
+    console.log("record",req.body);
     const record = new Record(req.body);
     try {
         const newRecord = await record.save();
